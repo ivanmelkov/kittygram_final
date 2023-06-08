@@ -3,19 +3,24 @@ version: '3'
 volumes:
   pg_data:
   static:
+  media:
 
 services:
   db:
-    image: postgres:13.10
+    image: postgres:13
     env_file: .env
     volumes:
       - pg_data:/var/lib/postgresql/data
   backend:
     build: ./backend/
     env_file: .env
+    depends_on:
+      - db
     volumes:
       - static:/backend_static
+      - media:/app/media/
   frontend:
+    image: ivanmelkov/kittygram_frontend
     env_file: .env
     build: ./frontend/
     command: cp -r /app/build/. /static/
