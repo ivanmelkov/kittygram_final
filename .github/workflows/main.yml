@@ -121,7 +121,7 @@ jobs:
         with:
           context: ./nginx/
           push: true
-          tags: ivanmelkov/kittygram_nginx:latest
+          tags: ivanmelkov/kittygram_gateway:latest
 
   deploy:
     runs-on: ubuntu-latest

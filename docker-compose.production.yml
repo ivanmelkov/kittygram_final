@@ -14,8 +14,8 @@ services:
   backend:
     image: ivanmelkov/kittygram_backend
     env_file: .env
-    depends_on:
-      - db
+#    depends_on:
+ #     - db
     volumes:
       - static:/backend_static
       - media:/app/media/
@@ -26,7 +26,7 @@ services:
     volumes:
       - static:/static
   gateway:
-    image: ivanmelkov/kittygram_nginx
+    image: ivanmelkov/kittygram_gateway
     env_file: .env
     ports:
       - 9000:80
